@@ -7,6 +7,11 @@ html, body{
   font-family: "open-sans" sans-serif;
 }
 
+h1{
+  text-align: right;
+  margin-right: 12px;
+}
+
 .WorkspaceContainer{
   background-color: #3f3f3f;
   padding: 0px 8px;
@@ -22,9 +27,12 @@ html, body{
 .InputContainer{
   background-color: #e5e5e5;
   padding: 0;
+  display: flex;
+  flex-direction: column;
 }
 
 .InputContainer textarea{
+  flex: 1;
   resize: none;
   font-size: 14px;
   line-height: 16px;
