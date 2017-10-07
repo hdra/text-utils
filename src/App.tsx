@@ -3,13 +3,19 @@ import './App.css';
 
 interface InputProps {
   inputValue: string;
+  lineNumber: number;
   onChange(event: React.ChangeEvent<HTMLTextAreaElement>): void;
 }
 
 class Input extends React.Component <InputProps, {}> {
   render() {
     return (
-      <textarea onChange={this.props.onChange} value={this.props.inputValue}/>
+      <textarea
+        placeholder="Enter data here..."
+        onChange={this.props.onChange}
+        value={this.props.inputValue}
+        rows={this.props.lineNumber}
+      />
     );
   }
 }
@@ -29,13 +35,13 @@ class Highlighter extends React.Component <OutputProps, {}> {
   }
   render() {
     return (
-      <ul>
+      <div>
         {
           this.props.lines.map( (line, lineNo) => {
-            return <li className={`lines ${this.isHighlighted(line)}`} key={lineNo}>{line}</li>;
+            return <p className={`lines ${this.isHighlighted(line)}`} key={lineNo}>{line}</p>;
           })
         }
-      </ul>
+      </div>
     );
   }
 }
@@ -56,7 +62,7 @@ class Summary extends React.Component <OutputProps, {}> {
   }
   render() {
     return (
-      <table>
+      <table className="pure-table pure-table-horizontal">
         <thead>
           <tr>
             <th>Line Content</th>
@@ -103,10 +109,19 @@ class Workspace extends React.Component <{}, WorkspaceState> {
   }
   render() {
     return (
-      <div className="container">
-        <Input onChange={this.textChanged} inputValue={this.state.inputValue}/>
-        <Highlighter counter={this.state.counter} lines={this.state.lines}/>
-        <Summary counter={this.state.counter} lines={this.state.lines}/>
+      <div className="WorkspaceContainer">
+        <div className="InputContainer">
+          <h1>INPUT</h1>
+          <Input onChange={this.textChanged} inputValue={this.state.inputValue} lineNumber={this.state.lines.length}/>
+        </div>
+        <div className="HighlightContainer">
+          <h1>HIGHLIGHT</h1>
+          <Highlighter counter={this.state.counter} lines={this.state.lines}/>
+        </div>
+        <div className="SummaryContainer">
+          <h1>SUMMARY</h1>
+          <Summary counter={this.state.counter} lines={this.state.lines}/>
+        </div>
       </div>
     );
   }
