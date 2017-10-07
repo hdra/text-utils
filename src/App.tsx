@@ -94,7 +94,7 @@ class Workspace extends React.Component <{}, WorkspaceState> {
     this.textChanged = this.textChanged.bind(this);
   }
   textChanged(e: React.ChangeEvent<HTMLTextAreaElement>) {
-    const lines = e.target.value.split('\n');
+    const lines = e.target.value.split('\n').map(line => line.trim());
 
     let counter = {};
     lines.forEach( (line) => {
