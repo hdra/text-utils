@@ -43,6 +43,8 @@ h1{
   padding-left: 4px;
   box-sizing: border-box;
   background-color: #f7f7f7;
+  overflow-y: hidden;
+  overflow-x: auto;
 }
 
 .HighlightContainer{
@@ -58,6 +60,7 @@ h1{
 .HighlightContainer div p {
   margin: 0;
   padding-left: 4px;
+  overflow-y: hidden;
 }
 
 .HighlightContainer .lines.highlighted {

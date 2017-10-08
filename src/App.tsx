@@ -38,7 +38,7 @@ class Highlighter extends React.Component <OutputProps, {}> {
       <div>
         {
           this.props.lines.map( (line, lineNo) => {
-            return <p className={`lines ${this.isHighlighted(line)}`} key={lineNo}>{line}</p>;
+            return <p className={`lines ${this.isHighlighted(line)}`} key={lineNo}>{line || '\u00A0'}</p>;
           })
         }
       </div>
